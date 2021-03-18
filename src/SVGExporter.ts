@@ -128,7 +128,7 @@ class SVGExporter {
 				currentBufferIndex++
 			) {
 				const currentIndexing = childIndexedBuffer[currentBufferIndex]
-				console.log(i, currentIndexing)
+
 				// Store points
 				const points = []
 				for (let len = currentIndexing.frameLength; vertexIndex < len; vertexIndex += 2) {
