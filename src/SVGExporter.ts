@@ -100,7 +100,7 @@ class SVGExporter {
 			`<svg viewBox="0 0 ${scene.width} ${scene.height}">` +
 			`\n\t<!-- Create with Urpflanze <https://docs.urpflanze.org> -->` +
 			(background ? `\n\t${background}` : '') +
-			`\n\t${paths.join('\n')}` +
+			`\n\t${paths.join('\n\t')}` +
 			`\n</svg>`
 		)
 	}
