@@ -121,9 +121,10 @@ class SVGExporter {
 
 			const childBuffer = sceneChilds[i].getBuffer() || []
 			const childIndexedBuffer = sceneChilds[i].getIndexedBuffer() || []
+			let childVertexIndex = 0
 
 			for (
-				let currentBufferIndex = 0, vertexIndex = 0, len = childIndexedBuffer.length;
+				let currentBufferIndex = 0, len = childIndexedBuffer.length;
 				currentBufferIndex < len;
 				currentBufferIndex++
 			) {
@@ -131,11 +132,11 @@ class SVGExporter {
 
 				// Store points
 				const points = []
-				for (let len = vertexIndex + currentIndexing.frameLength; vertexIndex < len; vertexIndex += 2) {
+				for (let len = childVertexIndex + currentIndexing.frameLength; childVertexIndex < len; childVertexIndex += 2) {
 					points.push(
-						childBuffer[vertexIndex].toFixed(settings.decimals) +
+						childBuffer[childVertexIndex].toFixed(settings.decimals) +
 							' ' +
-							childBuffer[vertexIndex + 1].toFixed(settings.decimals)
+							childBuffer[childVertexIndex + 1].toFixed(settings.decimals)
 					)
 				}
 
