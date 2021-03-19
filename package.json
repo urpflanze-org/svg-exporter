@@ -1,6 +1,6 @@
 {
 	"name": "@urpflanze/svg-exporter",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "Export urpflanze scene to SVG",
 	"license": "GPL-3.0-or-later",
 	"docs": "https://github.com/urpflanze-org/svg-exporter/blob/master/README.md",
