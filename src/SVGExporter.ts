@@ -151,7 +151,7 @@ class SVGExporter {
 				const styles: Array<string> = []
 
 				const fill = SVGExporter.getSVGProp<string>('fill', propArguments)
-				SVGExporter.bindColorAttribute('fill', fill, attributes, styles)
+				SVGExporter.bindColorAttribute('fill', fill || 'none', attributes, styles)
 
 				const stroke = SVGExporter.getSVGProp<string>(
 					'stroke',
