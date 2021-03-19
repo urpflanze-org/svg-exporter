@@ -131,7 +131,7 @@ class SVGExporter {
 
 				// Store points
 				const points = []
-				for (let len = currentIndexing.frameLength; vertexIndex < len; vertexIndex += 2) {
+				for (let len = vertexIndex + currentIndexing.frameLength; vertexIndex < len; vertexIndex += 2) {
 					points.push(
 						childBuffer[vertexIndex].toFixed(settings.decimals) +
 							' ' +
