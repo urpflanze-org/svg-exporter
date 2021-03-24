@@ -50,6 +50,7 @@
 	},
 	"publishConfig": {},
 	"devDependencies": {
+		"@types/tap": "^14.10.3",
 		"@typescript-eslint/eslint-plugin": "^4.16.1",
 		"@urpflanze/core": "*",
 		"@urpflanze/typedoc-docs": "^0.1.13",

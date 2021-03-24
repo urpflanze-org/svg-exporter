@@ -1,7 +1,7 @@
-const tap = require('tap')
+import tap from 'tap'
 
-const { Scene, React, Rect } = require('@urpflanze/core')
-const { SVGExporter } = require('../dist')
+import { Scene, Rect } from '@urpflanze/core'
+import { SVGExporter } from '../src'
 
 const scene = new Scene({
 	width: 200,
@@ -16,11 +16,11 @@ scene.add(
 	})
 )
 
-scene.update()
+scene.update(0)
 
 tap.deepEqual(
 	SVGExporter.parse(scene),
-	'<svg viewBox="0 0 200 200">\n\t<!-- Create with Urpflanze <https://docs.urpflanze.org> -->\n\t<rect width="200" height="200" fill="#ffffff" />\n\t<path d="M50.000 50.000 L150.000 50.000 L150.000 150.000 L50.000 150.000 Z" stroke="#000000" stroke-width="1" />\n</svg>',
+	'<svg viewBox="0 0 200 200">\n\t<!-- Create with Urpflanze <https://docs.urpflanze.org> -->\n\t<rect width="200" height="200" fill="#ffffff" />\n\t<path d="M50.000 50.000 L150.000 50.000 L150.000 150.000 L50.000 150.000 Z" fill="none" stroke="#000000" stroke-width="1" />\n</svg>',
 	'default'
 )
 
@@ -33,18 +33,18 @@ const scene2 = new Scene({
 
 scene2.add(
 	new Rect({
-		sideLength: 50,
+		sideLength: () => 50,
 		drawer: {
 			stroke: 'rgba(255,0,0,.2)',
 		},
 	})
 )
 
-scene2.update()
+scene2.update(0)
 
 tap.deepEqual(
 	SVGExporter.parse(scene2),
-	'<svg viewBox="0 0 200 200">\n\t<!-- Create with Urpflanze <https://docs.urpflanze.org> -->\n\t<rect width="200" height="200" fill="#ffffff" />\n\t<path d="M50.000 50.000 L150.000 50.000 L150.000 150.000 L50.000 150.000 Z" stroke="#ff0000" stroke-width="1" style="stroke-opacity: 0.2" />\n</svg>',
+	'<svg viewBox="0 0 200 200">\n\t<!-- Create with Urpflanze <https://docs.urpflanze.org> -->\n\t<rect width="200" height="200" fill="#ffffff" />\n\t<path d="M50.000 50.000 L150.000 50.000 L150.000 150.000 L50.000 150.000 Z" fill="none" stroke="#ff0000" stroke-width="1" style="stroke-opacity: 0.2" />\n</svg>',
 	'stroke opacity'
 )
 
@@ -65,7 +65,7 @@ scene3.add(
 	})
 )
 
-scene3.update()
+scene3.update(0)
 
 tap.deepEqual(
 	SVGExporter.parse(scene3, { background: false, decimals: 0 }),
