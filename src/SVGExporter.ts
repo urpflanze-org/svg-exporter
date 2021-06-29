@@ -1,6 +1,6 @@
 import { parseColorAndConvert, rgbToHex } from '@urpflanze/color'
 import { ISceneChildPropArguments, Scene, ShapePrimitive, TSceneChildProp } from '@urpflanze/core'
-import { ISVGExporterSettings, ISVGProps } from 'types'
+import { ISVGExporterSettings, ISVGProps } from './types'
 
 class SVGExporter {
 	static defaults: Required<ISVGExporterSettings> = {
