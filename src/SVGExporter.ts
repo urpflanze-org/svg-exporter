@@ -1,5 +1,5 @@
 import { parseColorAndConvert, rgbToHex } from '@urpflanze/color'
-import { ISceneChildPropArguments, Scene, ShapePrimitive, TSceneChildProp } from '@urpflanze/core'
+import type { IPropArguments, Scene, ShapePrimitive, TSceneChildProp } from '@urpflanze/core'
 import { ISVGExporterSettings, ISVGProps } from './types'
 
 class SVGExporter {
@@ -28,7 +28,7 @@ class SVGExporter {
 	 */
 	private static getSVGProp<T extends string | number>(
 		key: keyof ISVGProps,
-		propArguments: ISceneChildPropArguments,
+		propArguments: IPropArguments,
 		defaultValue?: T
 	): T | undefined {
 		let attribute = (propArguments.shape as ShapePrimitive<any, ISVGProps>).drawer[key] as TSceneChildProp<T>
@@ -141,7 +141,7 @@ class SVGExporter {
 				}
 
 				// get styles and bind attributes
-				const propArguments: ISceneChildPropArguments = {
+				const propArguments: IPropArguments = {
 					shape: currentIndexing.shape,
 					repetition: currentIndexing.repetition,
 					parent: currentIndexing.parent,
@@ -167,7 +167,7 @@ class SVGExporter {
 				styles.length > 0 && attributes.push(`style="${styles.join('; ')}"`)
 
 				// build path
-				const d = `M${points.join(' L')} ${currentIndexing.shape.isClosed() ? 'Z' : ''}`
+				const d = `M${points.join(' L')} ${(currentIndexing.shape as ShapePrimitive).isClosed() ? 'Z' : ''}`
 				const path = `<path d="${d}" ${attributes.length ? attributes.join(' ') + ' ' : ''}/>`
 
 				paths.push(path)

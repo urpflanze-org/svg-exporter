@@ -1,12 +1,12 @@
-import { TSceneChildProp } from '@urpflanze/core'
+import { IDrawerProps, TDrawerProp } from '@urpflanze/core'
 
 export interface ISVGExporterSettings {
 	decimals?: number
 	background?: boolean
 }
 
-export interface ISVGProps {
-	fill?: TSceneChildProp<string>
-	stroke?: TSceneChildProp<string>
-	lineWidth?: TSceneChildProp<number>
+export interface ISVGProps extends IDrawerProps {
+	fill?: TDrawerProp<string>
+	stroke?: TDrawerProp<string>
+	lineWidth?: TDrawerProp<number>
 }
